@@ -140,6 +140,17 @@ The `quality_assessor.py` module implements a custom evaluation framework:
 
 ## 6. Demo Screenshots
 
-*Include your demo screenshots here, like the one you sent.*
+### 📁 File Upload Page
+![Upload Page](images_ss/Screenshot 2025-11-03 123849.png)
 
-![Processing Results](image_eb4302.png)
+### 🎤 Transcription In Progress
+![Transcription](images_ss/Screenshot 2025-11-03 123915.png)
+
+### 📝 Generated Summary Output
+![Summary](images_ss/Screenshot 2025-11-03 123946.png)
+
+### ✅ Task Extraction Results
+![Tasks](images_ss/Screenshot 2025-11-03 124047.png)
+
+### 📊 Quality Score & Insights
+![Insights](images_ss/Screenshot 2025-11-03 124119.png)
