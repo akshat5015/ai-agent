@@ -1,6 +1,6 @@
 # AI Agent Prototype: Audio & Video Summarizer
 
-[cite_start]This is a submission for the AI Agent Prototype internship assignment[cite: 2, 31].
+This is a submission for the AI Agent Prototype internship assignment.
 
 - **Name:** Akshat  Gupta
 - **University:** IIT Roorkee
@@ -10,9 +10,9 @@
 
 ## 1. Project Overview
 
-[cite_start]This project is an advanced AI agent that automates the manual task of processing and understanding long-form media[cite: 4]. It accepts both **audio and video files**, transcribes the content, extracts on-screen text, generates a detailed summary, and identifies all actionable tasks.
+This project is an advanced AI agent that automates the manual task of processing and understanding long-form media[cite: 4]. It accepts both **audio and video files**, transcribes the content, extracts on-screen text, generates a detailed summary, and identifies all actionable tasks.
 
-[cite_start]This project successfully implements all mandatory core features and all optional bonus features from the assignment[cite: 3, 14].
+This project successfully implements all mandatory core features and all optional bonus features from the assignment.
 
 ---
 
@@ -22,15 +22,15 @@ This agent is a multi-component system where each part adds significant value. H
 
 ### 🌟 1. Fine-Tuned Summarizer (Heavy Weight)
 
-[cite_start]This is the core intelligence of the agent, directly fulfilling a mandatory requirement[cite: 6].
+This is the core intelligence of the agent, directly fulfilling a mandatory requirement.
 
-* [cite_start]**Model:** Uses a `facebook/bart-large-cnn` model fine-tuned with **LoRA** (Low-Rank Adaptation)[cite: 8].
+* **Model:** Uses a `facebook/bart-large-cnn` model fine-tuned with **LoRA** (Low-Rank Adaptation).
 * **Key Feature (Map-Reduce):** A 10-minute video creates a transcript far too long for a standard model's token limit. This summarizer solves this by implementing a **recursive Map-Reduce strategy**.
     1.  **Map:** The long transcript is automatically split into overlapping chunks.
     2.  **Summarize (Map):** Each chunk is summarized individually using a special `"chunk_summary"` prompt.
     3.  **Combine:** All the "chunk summaries" are combined into one document.
     4.  **Reduce:** This *new document* is recursively passed back into the summarizer with a `"final_summary"` prompt to create the final, coherent, and detailed summary.
-* [cite_start]**Why Fine-Tune?** [cite: 12] The base model does not understand the custom prompts (`"chunk_summary"`, `"final_summary"`) needed for this advanced logic. Fine-tuning for **Task Specialization** and **Adapted Style** was mandatory to make the model a reliable component in this summarization chain.
+* **Why Fine-Tune?** [cite: 12] The base model does not understand the custom prompts (`"chunk_summary"`, `"final_summary"`) needed for this advanced logic. Fine-tuning for **Task Specialization** and **Adapted Style** was mandatory to make the model a reliable component in this summarization chain.
 
 ### 🌟 2. Task & Deadline Extractor (Heavy Weight)
 
@@ -46,10 +46,10 @@ This component moves the agent from a simple summary tool to a true productivity
 
 ### 🌟 3. Multi-Tool/Agent Collaboration (Medium-Heavy Weight)
 
-[cite_start]This project is built as a **Planner + Multi-Tool Executor** system, fulfilling a bonus requirement[cite: 15].
+This project is built as a **Planner + Multi-Tool Executor** system, fulfilling a bonus requirement.
 
 * **Planner:** `AudioSummaryAgent` acts as the "brain." It analyzes the file (`_analyze_and_plan`) and decides *which* tools to use.
-* [cite_start]**Executors (Tools):** [cite: 16]
+* **Executors (Tools):** [cite: 16]
     * **`VideoProcessor`:** Handles video files, using `moviepy` to extract audio and `easyocr` to perform **OCR** on frames, capturing on-screen text.
     * **`AudioProcessor`:** Transcribes all audio using `whisper`.
     * **`FineTunedSummarizer`:** The "summarization" tool.
@@ -57,20 +57,20 @@ This component moves the agent from a simple summary tool to a true productivity
 
 ### 🌟 4. Insight & Evaluation Generation (Medium Weight)
 
-[cite_start]This fulfills the mandatory requirement to implement evaluation metrics[cite: 13].
+This fulfills the mandatory requirement to implement evaluation metrics.
 
 * **Quality Score:** The `quality_assessor.py` module runs a full evaluation **on every run**. It uses **ROUGE** scores (for summary content), readability metrics, and custom heuristics to calculate a final "Quality Score".
 * **Insights Tab:** The agent provides meta-analysis on its own performance. It uses the quality score to provide plain-English recommendations, such as warning the user if the summary quality is low or if no tasks were found in a "meeting" type file.
 
 ### 🌟 5. Web Interface (Bonus)
 
-* [cite_start]A full-featured Streamlit application (`src/ui/app.py`) provides an easy-to-use interface for uploading files and viewing the multi-tabbed results (Transcript, Summary, Tasks, Quality, Insights)[cite: 17].
+* A full-featured Streamlit application (`src/ui/app.py`) provides an easy-to-use interface for uploading files and viewing the multi-tabbed results (Transcript, Summary, Tasks, Quality, Insights).
 
 ---
 
 ## 3. AI Agent Architecture Document
 
-[cite_start]This section covers the "AI agent architecture document" deliverable[cite: 24].
+This section covers the "AI agent architecture document" deliverable.
 
 ### Interaction Flow
 1.  A user uploads a media file (e.g., `.mp4` or `.mp3`) to the Streamlit UI.
@@ -89,16 +89,16 @@ This component moves the agent from a simple summary tool to a true productivity
 
 ## 4. Data Science Report
 
-[cite_start]This section covers the "Data science report" deliverable[cite: 25].
+This section covers the "Data science report" deliverable.
 
-### [cite_start]Fine-Tuning Setup [cite: 26]
+### Fine-Tuning Setup 
 
 * **Base Model:** `facebook/bart-large-cnn`
 * **Method:** Parameter-Efficient Fine-Tuning (PEFT) using **LoRA** (Low-Rank Adaptation), as implemented in `train_model.py`.
 * **Training Data:** A small, custom dataset of `(input, target)` pairs is included in `train_model.py`. This data trains the model to respond to specific instructional prompts.
-* [cite_start]**Reason for Fine-Tuning:** The primary reason was **task specialization**[cite: 12]. The base model does not know how to handle the custom prompts required for our Map-Reduce strategy (e.g., `"Summarize this section..."` and `"Combine these summaries..."`). Fine-tuning teaches the model to follow these instructions, allowing it to act as an intelligent part of the agent's summarization chain.
+* **Reason for Fine-Tuning:** The primary reason was **task specialization**[cite: 12]. The base model does not know how to handle the custom prompts required for our Map-Reduce strategy (e.g., `"Summarize this section..."` and `"Combine these summaries..."`). Fine-tuning teaches the model to follow these instructions, allowing it to act as an intelligent part of the agent's summarization chain.
 
-### [cite_start]Evaluation Methodology [cite: 28]
+### Evaluation Methodology 
 
 The `quality_assessor.py` module implements a custom evaluation framework:
 * **Transcript Quality:** Measured by the Whisper model's confidence, text readability (Flesch ease), and coherence.
