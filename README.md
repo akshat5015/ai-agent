@@ -2,9 +2,9 @@
 
 [cite_start]This is a submission for the AI Agent Prototype internship assignment[cite: 2, 31].
 
-- **Name:** [Your Name]
-- **University:** [Your University]
-- **Department:** [Your Department]
+- **Name:** Akshat  Gupta
+- **University:** IIT Roorkee
+- **Department:** Chemical Engineering
 
 ---
 
