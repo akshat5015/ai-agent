@@ -1,0 +1,119 @@
+# Default configuration for Audio-to-Summary AI Agent
+
+# General settings
+log_level: "INFO"
+log_file: "audio_agent.log"
+data_dir: "./data"
+output_dir: "./output"
+environment: "development"
+debug: true
+
+# Audio processing configuration
+audio_processing:
+  sample_rate: 16000          # Target sample rate for processing
+  chunk_duration: 30          # Duration of each processing chunk in seconds
+  overlap_duration: 2         # Overlap between chunks in seconds
+  whisper_model: "base"       # Whisper model size: tiny, base, small, medium, large
+  noise_reduction: true       # Enable noise reduction preprocessing
+  silence_removal: true      # Enable silence removal
+
+# Model configuration
+model:
+  base_model: "facebook/bart-large-cnn"    # Base model for fine-tuning
+  cache_dir: "./models/cache"              # Directory for model cache
+  fine_tuned_path: "./models/fine_tuned"   # Path for fine-tuned model
+  
+  # LoRA fine-tuning parameters
+  lora_r: 16                              # LoRA rank
+  lora_alpha: 32                          # LoRA alpha parameter
+  lora_dropout: 0.1                       # LoRA dropout rate
+  lora_targets:                           # Target modules for LoRA
+    - "q_proj"
+    - "v_proj"
+    - "k_proj"
+    - "out_proj"
+  
+  # Text generation parameters
+  max_summary_length: 1024                # Maximum summary length
+  min_summary_length: 200                 # Minimum summary length (increased for longer summaries)
+  length_penalty: 2.0                     # Length penalty for generation
+  num_beams: 4                           # Number of beams for beam search
+  max_input_length: 2048                 # Maximum input sequence length (increased for longer transcripts)
+  max_output_length: 512                 # Maximum output sequence length
+  
+  # Training parameters
+  batch_size: 4                          # Training batch size
+  gradient_accumulation: 2               # Gradient accumulation steps
+  learning_rate: 0.0001                  # Learning rate for fine-tuning
+  num_epochs: 3                          # Number of training epochs
+  warmup_steps: 100                      # Warmup steps for learning rate
+
+# Task extraction configuration
+task_extraction:
+  confidence_threshold: 0.5              # Minimum confidence for task inclusion
+  similarity_threshold: 0.8              # Threshold for duplicate detection
+  max_tasks_per_content: 20              # Maximum tasks to extract per content
+  min_task_length: 3                     # Minimum task description length
+  max_task_length: 200                   # Maximum task description length
+
+# Quality evaluation configuration
+evaluation:
+  transcript_threshold: 0.8              # Quality threshold for transcripts
+  summary_threshold: 0.7                 # Quality threshold for summaries
+  task_threshold: 0.75                   # Quality threshold for tasks
+  overall_threshold: 0.7                 # Overall quality threshold
+  
+  # Component weights for overall quality calculation
+  transcript_weight: 0.3                 # Weight for transcript quality
+  summary_weight: 0.4                    # Weight for summary quality
+  task_weight: 0.3                       # Weight for task quality
+
+# User interface configuration
+ui:
+  host: "localhost"                      # UI host address
+  port: 8501                            # UI port number
+  debug: false                          # Enable debug mode for UI
+  max_file_size_mb: 100                 # Maximum upload file size in MB
+
+# Video processing configuration
+video_processing:
+  ocr:
+    frame_sample_rate: 1.0              # frames per second to OCR
+    min_text_length: 3                  # ignore very short OCR snippets
+    languages: ["en"]                  # OCR languages
+    detect_captions_only: true          # focus on likely caption area
+
+# Content type specific settings
+content_types:
+  academic:
+    summary_style: "structured_academic"
+    task_focus: "assignments_deadlines"
+    quality_boost: 0.1
+  
+  meeting:
+    summary_style: "action_oriented"
+    task_focus: "action_items"
+    quality_boost: 0.05
+  
+  study_session:
+    summary_style: "key_points"
+    task_focus: "study_tasks"
+    quality_boost: 0.0
+  
+  general:
+    summary_style: "comprehensive"
+    task_focus: "general_todos"
+    quality_boost: 0.0
+
+# Advanced processing options
+advanced:
+  enable_multi_agent: false             # Enable multi-agent processing
+  enable_rag: false                     # Enable RAG integration
+  enable_custom_tools: false            # Enable custom tool integration
+  parallel_processing: true             # Enable parallel chunk processing
+  cache_results: true                   # Cache intermediate results
+  
+  # Performance tuning
+  max_concurrent_chunks: 4              # Maximum concurrent audio chunks
+  memory_optimization: true             # Enable memory optimization
+  gpu_acceleration: true                # Use GPU if available

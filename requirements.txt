@@ -1,0 +1,43 @@
+# Core AI and ML libraries
+transformers==4.35.2
+torch==2.1.1
+tokenizers==0.15.0
+datasets==2.14.6
+peft==0.7.1
+accelerate==0.24.1
+
+# Audio processing
+librosa==0.10.1
+soundfile==0.12.1
+SpeechRecognition==3.10.0
+pydub==0.25.1
+openai-whisper
+moviepy==1.0.3
+opencv-python==4.10.0.84
+easyocr==1.7.1
+
+# Text processing and NLP
+nltk==3.8.1
+spacy==3.7.2
+textstat==0.7.3
+sumy==0.11.0
+
+# Web framework and API
+fastapi==0.104.1
+uvicorn==0.24.0
+streamlit==1.28.1
+
+# Utilities
+python-dotenv==1.0.0
+pydantic==2.5.0
+numpy==1.24.3
+pandas==2.1.3
+matplotlib==3.8.2
+seaborn==0.13.0
+tqdm==4.66.1
+requests==2.31.0
+
+# Evaluation and logging
+wandb==0.16.0
+rouge-score==0.1.2
+sacrebleu==2.3.1

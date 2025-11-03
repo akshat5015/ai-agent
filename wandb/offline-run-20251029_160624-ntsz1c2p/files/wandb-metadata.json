@@ -1,0 +1,49 @@
+{
+    "os": "Windows-10-10.0.26200-SP0",
+    "python": "3.10.15",
+    "heartbeatAt": "2025-10-29T10:36:24.435802",
+    "startedAt": "2025-10-29T10:36:24.356427",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--training-data",
+        "sample"
+    ],
+    "state": "running",
+    "program": "-m scripts.train_model",
+    "codePathLocal": null,
+    "host": "asus",
+    "username": "aksha",
+    "executable": "C:\\Users\\aksha\\anaconda3\\envs\\hf_env\\python.exe",
+    "cpu_count": 8,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2000.0,
+        "min": 0.0,
+        "max": 2000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2000.0,
+            "min": 0.0,
+            "max": 2000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 475.3753089904785,
+            "used": 346.7441864013672
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 2050",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2050",
+            "memory_total": 4294967296
+        }
+    ],
+    "memory": {
+        "total": 15.677841186523438
+    }
+}

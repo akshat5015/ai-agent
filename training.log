@@ -1,0 +1,20 @@
+2025-10-29 16:02:06,779 - root - INFO - Configuration loaded from C:\Users\aksha\OneDrive\Desktop\audio-summary-ai-agent\config\default.yaml
+2025-10-29 16:02:06,779 - root - INFO - Configuration validation passed
+2025-10-29 16:02:06,781 - root - INFO - Using sample training data
+2025-10-29 16:02:06,785 - models.fine_tuned_summarizer - INFO - Loading tokenizer for facebook/bart-large-cnn
+2025-10-29 16:02:12,691 - models.fine_tuned_summarizer - INFO - Fine-tuned model not found, loading base model...
+2025-10-29 16:02:12,691 - models.fine_tuned_summarizer - INFO - Loading base model: facebook/bart-large-cnn
+2025-10-29 16:02:15,224 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-10-29 16:04:41,242 - models.fine_tuned_summarizer - INFO - Applying LoRA configuration to base model...
+2025-10-29 16:04:43,600 - root - INFO - Starting model fine-tuning...
+2025-10-29 16:04:43,600 - models.fine_tuned_summarizer - INFO - Starting model fine-tuning...
+2025-10-29 16:05:30,150 - models.fine_tuned_summarizer - INFO - Starting training...
+2025-10-29 16:06:48,494 - models.fine_tuned_summarizer - INFO - Fine-tuning completed. Model saved to ./models/fine_tuned
+2025-10-29 16:06:48,642 - root - INFO - Fine-tuning completed successfully!
+2025-10-29 16:06:48,644 - root - INFO - Testing fine-tuned model...
+2025-10-29 16:06:55,943 - models.fine_tuned_summarizer - INFO - Summary generated in 7.30s, compression ratio: 0.47
+2025-10-29 16:06:55,943 - root - INFO - Test generation completed:
+2025-10-29 16:06:55,943 - root - INFO - Input length: 656 characters
+2025-10-29 16:06:55,943 - root - INFO - Generated summary: Today's lecture covered the fundamentals of machine learning. We discussed supervised learning, which involves training algorithms on labeled data. The homework assignment is to implement a simple linear regression model and submit it by next friday. We need to use the dataset provided on the course website.
+2025-10-29 16:06:55,943 - root - INFO - Summary length: 309 characters
+2025-10-29 16:06:55,943 - root - INFO - Compression ratio: 0.47
