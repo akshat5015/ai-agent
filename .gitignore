@@ -1,0 +1,30 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+hf_env/
+.venv/
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store
+
+# Logs and temp files
+*.log
+*.swp
+test_installation.py
+
+# Model and Cache Folders (VERY IMPORTANT)
+models/
+cache/
+.huggingface/
+wandb/
+
+# Model weight formats (NEVER commit these)
+*.safetensors
+*.bin
+*.pth
+*.model
